@@ -1,0 +1,11 @@
+footer {
+    max-width: 1560px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(53, 51, 51);
+    color: gold;
+    padding: 0.5rem 0rem;
+    margin: 3rem auto 5px;
+}

@@ -1,0 +1,44 @@
+.main-container{
+    border: 2px solid black;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+.articles-thumbnail{
+    border: 2px dashed grey;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 900px;
+    width: 100%;
+    /* box-sizing: border-box; */
+    padding: 1rem;
+}
+.blog-heading{
+    text-align: left;
+    font-size: 40px;
+    font-weight: 600;
+    border-bottom: 2px solid orange;
+    width: 300px;
+}
+hr{
+    width: 100%;
+    color: blue;
+}
+.box-containes-leftAndRight{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.advertisement-box {
+    width: 350px;
+    height: 618px;
+    border: 2px solid #707070;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}

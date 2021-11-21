@@ -1,0 +1,59 @@
+.LatestStories-cont a{
+    color: black;
+}
+.LatestStories-cont{
+    /* border: 2px solid black; */
+    width: 100%;
+    max-width: 1200px;
+    margin: 1rem auto;
+}
+.latest-stories-heading{
+    text-align: left;
+    font-size: 40px;
+    font-weight: 600;
+    border-bottom: 3px solid orange;
+    width: 300px;
+}
+.Latest-flex{
+    /* border: 2px solid #0000ff;  */
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.latest-stories-boxs{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    justify-content: space-between;
+    height: 400px;
+}
+.latest-stories-title{
+    font-size: 30px;
+    font-weight: 400;
+    text-align: start;
+}
+.latest-stories-description{
+    font-size: 17px;
+    text-align: start;
+}
+.latest-stories-time{
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;   
+    gap: 1rem;
+}
+@media screen and (max-width:400px) {
+    .Latest-flex{
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+    .latest-stories-heading{
+        text-align: center;
+        background-color: rgb(53, 51, 51);
+        color: gold;
+        width: 360px;
+    }
+}
