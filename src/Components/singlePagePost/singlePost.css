@@ -6,7 +6,7 @@
 }
 .singlePost-cont{
     width: 100%;
-    max-width: 770px;
+    max-width: 770px;   
     margin: 1rem auto;
     /* border: 2px solid black; */
 }
@@ -101,6 +101,57 @@
 }
 .claps span {
     font-weight: 900;
+}
+
+.moreFromTheSiren{
+    /* border: 2px solid red; */
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+    margin-top: 3rem;
+}
+#heading-moreFromTheSiren{
+    text-align: left;
+    
+    font-weight: 600;
+    border-bottom: 3px solid orange;
+    width: 270px; 
+}
+.moreSirens-flex{
+    margin-top: 2rem;
+}
+.relatedPosts{
+    /* border: 2px solid blue; */
+    width: 345px;
+}
+.relatedPosts img {
+    /* align-items: flex-start; */
+    width: 340px;
+    height: 200px;
+}
+.tilteOfSiren{
+    font-size: 30px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.moreSiren-author-img-name-date{
+    display: flex;
+    width: 100%;
+    max-width: 270px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+}
+.moreSiren-author-img-name-date img{
+    width: 100px;
+    height: 100px;
+}
+
+.moreSirens-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 @media screen and (max-width:400px) {
