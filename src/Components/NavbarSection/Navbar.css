@@ -90,7 +90,7 @@ hr{
     .show{
         left: 0 !important;
         z-index: 1;
-        background-color: w;
+        background-color: white;
     }
     hr{
         display: none;

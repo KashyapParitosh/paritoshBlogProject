@@ -183,4 +183,18 @@
     .singlePost-desc p{
         font-size: 15px;
     }
+    .moreFromTheSiren{
+        max-width: 400px;
+    }
+    .moreSirens-flex{
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+    .relatedPosts{
+        margin: 1.5rem 3px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .relatedPosts img{
+        width: 345px;
+    }
 }
