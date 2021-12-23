@@ -36,8 +36,7 @@ function SignUp() {
       }
       if( localStorage.getItem("user") !== null){
         return <Navigate to="/category/Home" />
-      console.log("hereif condition");
-    }
+      }
 
     return(
        <>
