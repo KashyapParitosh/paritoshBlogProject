@@ -15,7 +15,7 @@ const ListOfBlogData = [
     title : "For The Love Of Food",
     ImgUrl : "https://media.istockphoto.com/photos/assorted-indian-dish-picture-id868408746",
     desc : "Indian cuisine encompasses a wide variety of regional cuisine native to India. Given the range of diversity in soil type, climate and occupations, these cuisines vary significantly from each other and use locally available ingredients such as: herbs, vegetables and fruits.",
-    category: "food",
+    category: "Food",
     time: " /November 25 2018",
 },
 
@@ -25,7 +25,7 @@ const ListOfBlogData = [
     title : "Make yourself stronger than your excuses. ",
     ImgUrl : "https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80",
     desc : "If you run a fitness gym, this is one slogan that can bring customers in. No one likes having to drive miles out of their way to go to the gym. It is always easier to have a gym that is actually close to home.",
-    category: "fitness",
+    category: "Fitness",
     time: " /November 21 2015",
 },
 
@@ -45,7 +45,7 @@ const ListOfBlogData = [
     ImgUrl: "https://www.culturalindia.net/iliimages/Bengali-Food-&-Cuisine-1.jpg",
     title: "Bengali Food & Cuisine",
     desc: "Bengali food that originated and evolved in the region of Bengal situated in the eastern subcontinent of India (presently divided into West Bengal in India and a separate nation called Bangladesh) is rich and varied in its platter starting from snacks to main courses to sweets Bengali food that originated and evolved in the region of Bengal situated in the eastern subcontinent of India is rich and varied in its platter starting from snacks to main courses to sweets.",
-    category: "food",
+    category: "Food",
     time: " /March 17 2021",
 },
 
@@ -55,7 +55,7 @@ const ListOfBlogData = [
     ImgUrl: "https://www.culturalindia.net/iliimages/South%20Indian%20Food_1.jpg",
     title: "South Indian Food",
     desc: "South Indian food has earned much fame across the globe, particularly for scrumptious dishes like Dosa, Vada, Idli, Uttapam and Sambar. South Indian meals comprise cuisines of five South Indian states namely Tamil Nadu, Karnataka, Kerala, Andhra Pradesh and Telangana, along with several local states cuisines of five South Indian states namely Tamil Nadu, Karnataka, Kerala, Andhra Pradesh and Telangana, along with states namely Tamil Nadu, Karnataka, Kerala, Andhra Pradesh and Telangana, along with several local cuisines within these states.",
-    category: "food",
+    category: "Food",
     time: " /january 25 2016",
 },
 
@@ -65,7 +65,7 @@ const ListOfBlogData = [
     ImgUrl: "https://www.culturalindia.net/iliimages/Rajasthani-Food-ili-118-img-3.jpg",
     title: "Rajasthani Food | Dal-Baati-Churma",
     desc: "It is one of the signature Rajasthani dishes that have earned popularity across the globe. This delicious platter comprise of a combination of three different items namely a spicy Dal, a deep-fried Baati and a mouth-watering and slightly sweetish churma cooked uniquely with different ingredients. The baatis are baked flaky round breads made of gehun ka atta (wheat flour), rava (semolina), besan (Bengal gram flour), salt, milk and ghee that are typically served after dipping with ghee. The unsalted version of the baatis deep fried in ghee are crushed and mixed with jaggery and sugar thus forming the churma. The dal item is prepared of five different dals namely chana dal (split Bengal gram), toovar (arhar) dal, moong dal (split green gram), urad dal (split black lentils) and whole moong (whole green gram) and referred as panchmel dal or panch kutti dal.",
-    category: "food",
+    category: "Food",
     time: " /December 05 2017",
 },
 
@@ -75,7 +75,7 @@ const ListOfBlogData = [
     ImgUrl: "https://www.thetravelmagazine.net/wp-content/uploads/new-york-central-park-in-winter-frozen-lake.jpg",
     title: "Why New York is a great winter destination",
     desc: "When I visited New York one December, I admit that despite thermals and layers, I was freezing. The cold temperatures – sometimes reaching lows of -2°C – were further blighted by biting Arctic winds. Yet streaming eyes and a face pinched by the frost did not deter me from enjoying an hour-long narrated horse and carriage ride around Central Park warmed by a cosy blanket. Or sauntering (with a guide) around the park’s huge expanse enjoying picturesque spells of sunny hues as they fell upon ground decorated with new snowfall. And stumbling upon Yoko Ono’s heart-warming memorial to the much-loved John Lennon.",
-    category: "travel",
+    category: "Travel",
     time: " /March 12 2021",
 },
 
@@ -85,7 +85,7 @@ const ListOfBlogData = [
     ImgUrl: "https://thumbor.thedailymeal.com/_iOshLpkCdDtWi0Ysw8sIHy8Yc8=//https://www.theactivetimes.com/sites/default/files/slideshows/104356/115566/Mysterious_Magnetic_Shutterstock.jpg",
     title: "Magnetic Hill Leh Ladakh India",
     desc: "We all have studied that gravity pulls all the objects towards it, doesn't it? That’s what Newton proved to that world. But nature always has more things in store than humans could ever imagine. One such place is one of the finest attractions of Ladakh- The Magnetic Hills. It is a gravity-defying place approximately 27 km from Leh City on the Leh-Kargil highway. This place is a designated must-visit attraction while visiting Leh Ladakh.", 
-    category: "travel",
+    category: "Travel",
     time: " /September 10 2019",
 },
 
@@ -95,7 +95,7 @@ const ListOfBlogData = [
     ImgUrl: "https://www.gosahin.com/go/p/a/1515867134_Pongong-Lake1.jpg",
     title: "Pangong Lake | District Leh",
     desc: "Pangong Lake, one of the most famous high altitude lakes in Leh Ladakh. This scenic wonder derives its name from the Tibetan word, “Pangong Tso”, which means “high grassland lake”. You could spend hours in contemplation here, and still not have enough of its beauty. Pangong Tso is also known to change colors, appearing blue, green and red at different times of a day. If you have decided to go on a trip to Ladakh anytime soon, don’t forget to visit Pangong Tso Lake. ", 
-    category: "travel",
+    category: "Travel",
     time: " /Oct 14 2014",
 },
 
@@ -135,7 +135,7 @@ const ListOfBlogData = [
     title : "Take Your Fitness Blog to the Next Level",
     ImgUrl : "https://bloggingtips.com/wp-content/uploads/2018/10/pasted-image-0-13.png",
     desc : "Often when we think of exercise a certain image springs to mind, but fitness is something that can be part of everyone’s lives.Your content could inspire someone to try a sport that they thought was impossible for them, or to enjoy fitness through life changes like pregnancy or a period of injury.",
-    category: "fitness",
+    category: "Fitness",
     time: " /December 21 2015",
 },
 ]

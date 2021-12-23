@@ -16,7 +16,7 @@ function NavBar() {
         <div className="navBar-ul">
           <div onClick={clickHandler}><i className="fas menu-btn fa-bars" ></i></div>  
           <ul className={ menuIcon? "show" : "" }>
-            {navLinks.map((item,index)=>{return <li key={index}><Link exact="true" to={item.to}>{item.name}</Link></li>})}
+            {navLinks.map((item,index)=>{return <li key={index}><Link exact to={`/category/${item.category}`}>{item.name}</Link></li>})}
             <li><Link exact="true" to="/GetStarted">Login/Signin</Link></li>
           </ul>
         </div>

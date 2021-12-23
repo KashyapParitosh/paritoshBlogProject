@@ -23,7 +23,7 @@ function LogIn() {
   return (
     <>
       {isValid ? (
-        <Navigate to="/" />
+        <Navigate to="/Home" />
       ) : (
         <div className="logIn-cont">
           <h1>Welcome</h1>

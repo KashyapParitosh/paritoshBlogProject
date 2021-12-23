@@ -1,89 +1,68 @@
 import "./multiUse.css";
 import ListOfBlogData from "../ListOfArrayOfObjects";
-import LatestArticleImg from "../../images/latestArticle Img.PNG";
+import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+function CreateBollywoodPosts(data){
+  return <div className="dataOfArticles">
+  <img src={data.ImgUrl} alt="Latest Article" />
+  <div className="article-heading-home-flex">
+    <div>
+    <Link to={`/${data.category}/${data.id}`}>
+      <div className="latest-post-title-1">{data.title}</div>
+    </Link>
+      <p>
+        {data.desc}
+      </p>
+    </div>
+    <div>
+      {" "}
+      <span className="latest-home-type">{data.category}</span>
+      <span className="latest-home-date">{data.time}</span>
+    </div>
+  </div>
+</div>
+}
+
+
 function MultiUse() {
-    
+  const [postNumber, setpostNumber] = useState(2)
+  const { category } = useParams();
+  const [blog, setblog] = useState(null)
+
+  useEffect(() => {
+      let blog = ListOfBlogData.find(blog => blog.category === category)
+      if (blog) {
+          setblog(blog)
+      }
+  }, [category])
+      
   return (
-    <div className="main-container">
-      <div className="blog-heading">Heading of blog</div>
+    <>
+      <div className="main-container margtop2rem">
+        <div className="blog-heading">{category}</div>
 
-      {/* <hr/> */}
-      <div className="box-containes-leftAndRight">
-        <div className="blogs-box-flex">
-          <div className="articles-thumbnail">
-            <img src={LatestArticleImg} alt="Latest Article Image" />
-            <div className="article-heading-home-flex">
-              <div>
-                <div className="latest-post-title-1">
-                  Joshua Tree Overnight Adventure{" "}
-                </div>
-                <p>
-                  Gujarat is vastly underrated and it’s a mystery to us why the
-                  region isn’t more well-known as a tourist destination. It has
-                  a plethora of temples and palaces
-                </p>
-              </div>
-              <div>
-                {" "}
-                <span className="latest-home-type">Travel</span>
-                <span className="latest-home-date">/ August 21 2017</span>
-              </div>
+        {/* <hr/> */}
+        <div className="box-containes-leftAndRight">
+          <div className="blogs-box-flex">
+
+            {ListOfBlogData.filter((filtering)=>
+              filtering.category === category
+            ).map(CreateBollywoodPosts)}
+
+
+            <div className="load-more">
+              {" "}
+              <i className="fas fa-arrow-down"></i> Load More
             </div>
           </div>
 
-          <div className="articles-thumbnail">
-            <img src={LatestArticleImg} alt="Latest Article Image" />
-            <div className="article-heading-home-flex">
-              <div>
-                <div className="latest-post-title-1">
-                  Joshua Tree Overnight Adventure{" "}
-                </div>
-                <p>
-                  Gujarat is vastly underrated and it’s a mystery to us why the
-                  region isn’t more well-known as a tourist destination. It has
-                  a plethora of temples and palaces
-                </p>
-              </div>
-              <div>
-                {" "}
-                <span className="latest-home-type">Travel</span>
-                <span className="latest-home-date">/ August 21 2017</span>
-              </div>
-            </div>
+          <div className="rightSide-box">
+            <div className="advertisement-box">Advertisement</div>
           </div>
-
-          <div className="articles-thumbnail">
-            <img src={LatestArticleImg} alt="Latest Article Image" />
-            <div className="article-heading-home-flex">
-              <div>
-                <div className="latest-post-title-1">
-                  Joshua Tree Overnight Adventure{" "}
-                </div>
-                <p>
-                  Gujarat is vastly underrated and it’s a mystery to us why the
-                  region isn’t more well-known as a tourist destination. It has
-                  a plethora of temples and palaces
-                </p>
-              </div>
-              <div>
-                {" "}
-                <span className="latest-home-type">Travel</span>
-                <span className="latest-home-date">/ August 21 2017</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="load-more">
-            {" "}
-            <i className="fas fa-arrow-down"></i> Load More
-          </div>
-        </div>
-
-        <div className="rightSide-box">
-          <div className="advertisement-box">Advertisement</div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 export default MultiUse;
