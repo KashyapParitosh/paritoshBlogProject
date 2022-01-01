@@ -1,7 +1,7 @@
 import "./multiUse.css";
-import ListOfBlogData from "../ListOfArrayOfObjects";
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import axios from 'axios'
 
 function CreateBollywoodPosts(data){
   return <div className="dataOfArticles">
@@ -28,15 +28,27 @@ function CreateBollywoodPosts(data){
 function MultiUse() {
   const [postNumber, setpostNumber] = useState(2)
   const { category } = useParams();
-  const [blog, setblog] = useState(null)
+  const [blogs, setblog] = useState([])
 
   useEffect(() => {
-      let blog = ListOfBlogData.find(blog => blog.category === category)
-      if (blog) {
-          setblog(blog)
-      }
-  }, [category])
+    const config = { params : { category : category }}
+    const url = "http://localhost:8000/api/v1/blogs/"
+    axios.get(url, config).then((res)=> {
+      console.log(res);
+      return setblog(res.data.filteredData)
+    })
+    .catch((err)=> {
+      console.log(err);
+    })
+  },[category])
+
+   useEffect(()=>{
+     setpostNumber(2);
+   },[category])
       
+   const UpdatePostCount = ()=> {
+     setpostNumber((prev)=> prev + 2 );
+   } 
   return (
     <>
       <div className="main-container margtop2rem">
@@ -46,12 +58,12 @@ function MultiUse() {
         <div className="box-containes-leftAndRight">
           <div className="blogs-box-flex">
 
-            {ListOfBlogData.filter((filtering)=>
-              filtering.category === category
-            ).map(CreateBollywoodPosts)}
+            
+            {
+              blogs.slice(0, postNumber).map(CreateBollywoodPosts)
+            }
 
-
-            <div className="load-more">
+            <div className="load-more" onClick={UpdatePostCount}>
               {" "}
               <i className="fas fa-arrow-down"></i> Load More
             </div>

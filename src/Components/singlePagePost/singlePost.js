@@ -4,7 +4,8 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import ListOfBlogData from "../ListOfArrayOfObjects";
 import Claps from "../../images/clap.png";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+
 
 
 function createMoreSirens(item) {

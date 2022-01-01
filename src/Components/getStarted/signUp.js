@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import axios from 'axios';
 
 function SignUp() {
     const [emailValue, setEmail] = useState("");
@@ -21,7 +22,7 @@ function SignUp() {
 
     const submitData = (e) => {
         e.preventDefault();
-        console.log("run");
+        const name = fullName;
         const password = passValue
         const email = emailValue;
         console.log(password, email)
@@ -32,11 +33,24 @@ function SignUp() {
         setError("");
 
         localStorage.setItem("user", "Signed")
-        console.log("here")
-      }
-      if( localStorage.getItem("user") !== null){
-        return <Navigate to="/category/Home" />
-      }
+        console.log("here");
+        
+        const body = {
+          name, password, email
+        }
+        axios.post( "http://localhost:8000/api/v1/auth/signup", body )
+        .then( res => console.log(res.status, res.data.message, res.data.userList))
+        .catch( err =>console.log(err.status, err.message));
+    }
+
+    if(localStorage.getItem("user") !== null){
+      // window.location.reload(false);
+        return <Navigate replace to='/category/Home' />
+    }
+      // if( localStorage.getItem("user") !== null){
+      //   window.location.reload(false);
+      //   return <Navigate replace to="/category/Home" />
+      // }
 
     return(
        <>

@@ -6,7 +6,12 @@ import navLinks from "./navlinks";
 function NavBar() {
     const [menuIcon, setMenuIcon] = useState(false)
     const clickHandler = ()=> setMenuIcon((prevState) => !prevState)
-  return (
+    const user = localStorage.getItem("user");
+    let loggedIn = true;
+    if ( user === null ){
+      loggedIn = false;
+    }
+    return (
     <div className="navSec-container">
       <nav className="navbar">
         <div className="logo">
@@ -17,7 +22,7 @@ function NavBar() {
           <div onClick={clickHandler}><i className="fas menu-btn fa-bars" ></i></div>  
           <ul className={ menuIcon? "show" : "" }>
             {navLinks.map((item,index)=>{return <li key={index}><Link exact to={`/category/${item.category}`}>{item.name}</Link></li>})}
-            <li><Link exact="true" to="/GetStarted">Login/Signin</Link></li>
+            <li><Link exact="true" to="/GetStarted">{loggedIn ? "View Profile" : "Login/Signin"}</Link></li>
           </ul>
         </div>
       </nav>

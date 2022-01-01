@@ -1,6 +1,7 @@
 import "./login.css";
 import { useState } from "react";
 import { Navigate } from 'react-router';
+import axios from 'axios';
 
 function LogIn() {
   const [isValid, setActive] = useState(false);
@@ -9,11 +10,23 @@ function LogIn() {
 
   const clickHandler = (e) => {
     e.preventDefault();
-    if (emailValue.length >= 1 && passValue.length >= 1) {
-        setActive(true);
-    } else {
-        alert("invalid")
+    // if (emailValue.length >= 1 && passValue.length >= 1) {
+    //     setActive(true);
+    // } else {
+    //     alert("invalid")
+    // }
+    const email = emailValue;
+    const password = passValue;
+    if(email ===undefined || password === undefined ){
+      alert("Please enter valid Email & Password")
+      return;
     }
+    const body = {
+      email, password
+    }
+    axios.post("http://localhost:8000/api/v1/auth/login", body)
+    .then(res=> console.log(res))
+    .catch(res=> console.log(res))
 }
 
 //   const clickHandler = () => {
@@ -23,7 +36,7 @@ function LogIn() {
   return (
     <>
       {isValid ? (
-        <Navigate to="/Home" />
+        <Navigate to="/category/Home" />
       ) : (
         <div className="logIn-cont">
           <h1>Welcome</h1>
