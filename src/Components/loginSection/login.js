@@ -1,12 +1,13 @@
 import "./login.css";
 import { useState } from "react";
-import { Navigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 import axios from 'axios';
 
 function LogIn() {
   const [isValid, setActive] = useState(false);
   var [emailValue, setEmail] = useState("");
   var [passValue, setPass] = useState("");
+  const navigate = useNavigate();
 
   const clickHandler = (e) => {
     e.preventDefault();
@@ -27,6 +28,9 @@ function LogIn() {
     axios.post("http://localhost:8000/api/v1/auth/login", body)
     .then(res=> console.log(res))
     .catch(res=> console.log(res))
+
+    navigate("/category/Home");
+    window.location.reload(false);
 }
 
 //   const clickHandler = () => {
@@ -39,7 +43,7 @@ function LogIn() {
         <Navigate to="/category/Home" />
       ) : (
         <div className="logIn-cont">
-          <h1>Welcome</h1>
+          <h1 className='WelcomeHeading'>Welcome</h1>
 
           <form className="form">
             <input

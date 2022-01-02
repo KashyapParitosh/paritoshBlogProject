@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function SignUp() {
     const [emailValue, setEmail] = useState("");
     const [passValue, setPass] = useState("");
     const [fullName, setName] = useState("");
+    const navigate = useNavigate();
+    const [token,setToken] = useState(()=>localStorage.getItem("token" || ""));
 
     const [error, setError] = useState(null);
     // const [userDetails, setUserDetails] = useState({
@@ -32,21 +34,27 @@ function SignUp() {
         }
         setError("");
 
-        localStorage.setItem("user", "Signed")
         console.log("here");
         
         const body = {
           name, password, email
         }
         axios.post( "http://localhost:8000/api/v1/auth/signup", body )
-        .then( res => console.log(res.status, res.data.message, res.data.userList))
+        .then( (res) => {
+          const token = res.data.data.token
+          setToken(token);
+          console.log(res.data.data.token)
+          localStorage.setItem("token", token)
+        })
         .catch( err =>console.log(err.status, err.message));
+
+        localStorage.setItem("user", "Signed")
+
+        navigate("/category/Home")
+        window.location.reload(false);
     }
 
-    if(localStorage.getItem("user") !== null){
-      // window.location.reload(false);
-        return <Navigate replace to='/category/Home' />
-    }
+    
       // if( localStorage.getItem("user") !== null){
       //   window.location.reload(false);
       //   return <Navigate replace to="/category/Home" />
@@ -55,7 +63,7 @@ function SignUp() {
     return(
        <>
          <div className="logIn-cont">
-          <h1>Welcome</h1>
+          <h1 className='WelcomeHeading'>Welcome</h1>
 
           <form className="form">
             <input
@@ -64,9 +72,6 @@ function SignUp() {
               // onChange={handleData}
               placeholder="Enter Name"
               type="text"
-              // name='fullname'
-              // value= {userDetails.fullName}
-
             />
 
             <input

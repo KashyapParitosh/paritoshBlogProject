@@ -2,6 +2,7 @@ import { Navigate, Link } from 'react-router-dom';
 
 const Logout = ()=> {
     localStorage.removeItem("user")
+    localStorage.removeItem("token");
     window.location.reload(false);
 }
 

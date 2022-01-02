@@ -14,7 +14,9 @@
     align-items: center;
     gap: 2rem;
 }
-
+.WelcomeHeading{
+    text-align: center;
+}
 .form input{
     border-style: none;
     background: transparent;

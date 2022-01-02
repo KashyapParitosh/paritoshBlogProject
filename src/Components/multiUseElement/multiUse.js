@@ -28,14 +28,15 @@ function CreateBollywoodPosts(data){
 function MultiUse() {
   const [postNumber, setpostNumber] = useState(2)
   const { category } = useParams();
-  const [blogs, setblog] = useState([])
+  const [blogs, setBlog] = useState([])
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const config = { params : { category : category }}
+    const config = { params : { category : category }, headers: {"authorization": `Bearer ${token}`}}
     const url = "http://localhost:8000/api/v1/blogs/"
     axios.get(url, config).then((res)=> {
       console.log(res);
-      return setblog(res.data.filteredData)
+      return setBlog(res.data.filteredData)
     })
     .catch((err)=> {
       console.log(err);
