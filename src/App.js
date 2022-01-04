@@ -1,14 +1,14 @@
 import "./App.css";
 import Home from "./Components/homeSection/home";
 import NavBar from './Components/NavbarSection/Navbar'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 // import Food from "./Components/food/food";
 // import Travel from "./Components/travel/travel";
 // import Fitness from "./Components/fitness/fitness";
 // import Bollywood from "./Components/bollywood/bollywood";
 // import Hollywood from "./Components/hollywood/hollywood";
 import SinglePost from "./Components/singlePagePost/singlePost";
-import LogIn from './Components/loginSection/login'
+
 import Footer from "./Components/Footer/Footer";
 import MultiUse from "./Components/multiUseElement/multiUse";
 import GetStarted from "./Components/getStarted/getStarted";

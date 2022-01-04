@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import NavBar from '../NavbarSection/Navbar';
-import Login from '../loginSection/login'
+import './getStarted.css'
+
 import SignUp from './signUp'
-import Footer from '../Footer/Footer'
-import { Navigate } from 'react-router';
+
 import LogIn from "../loginSection/login";
 
 import UserProfile from "./userProfile";
@@ -30,7 +29,7 @@ function GetStarted() {
               )  : 
               <>
                 { isNew ? <SignUp /> : <LogIn />}
-                <p>{isNew ? "Already have an account?" : "Don't have an account?"}
+                <p className="optionForAccount">{isNew ? "Already have an account?" : "Don't have an account?"}
                 <button className="signup-text" onClick={clickHandler}> {isNew ? "LogIn" : "SignUp"}</button>
                 </p>
               </>

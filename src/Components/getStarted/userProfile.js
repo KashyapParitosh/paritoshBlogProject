@@ -1,4 +1,6 @@
-import { Navigate, Link } from 'react-router-dom';
+import "./userProfile.css"
+import { Link } from 'react-router-dom';
+import photoOfUser from '../../images/singlePost-author-img.png'
 
 const Logout = ()=> {
     localStorage.removeItem("user")
@@ -10,8 +12,11 @@ function UserProfile () {
     return(
        <>
           <div className="userProfile-cont">
-              <h1>User Profile</h1>
-              <Link to="/GetStarted" ><button onClick={Logout}>Log Out</button></Link>
+              <div className="imageOfUser"><img src={photoOfUser} alt="photoOfUser" /></div>
+              <div className="userdetails">
+                 <div className="userName">Paritosh Kahsyap</div>
+                 <Link to="/GetStarted" ><button onClick={Logout}>Log Out</button></Link>
+              </div>
           </div>
        </>
     )

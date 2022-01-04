@@ -1,0 +1,22 @@
+.userProfile-cont{
+    /* border: 2px solid red; */
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.imageOfUser{
+    /* width: 200px;
+    height: 200px;
+    border: 1px solid red;
+    border-radius: 50%; */
+}
+
+
+@media screen and (max-width:400px) {
+  .userProfile-cont{
+      flex-direction: column;
+  }  
+}
