@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import ListOfBlogData from "../ListOfArrayOfObjects";
 import Claps from "../../images/clap.png";
 import {Link} from 'react-router-dom';
+import axios from 'axios'
 
 
 
@@ -33,6 +34,7 @@ function SinglePost() {
   const [once, setOnce] = useState(true);
 
   const [counter, setCounter] = useState(51);
+  const token = localStorage.getItem("token");
 
   const updatingClap = () => {
     setOnce(!once);
@@ -44,18 +46,45 @@ function SinglePost() {
     }
   };
 
-  useEffect(() => {
-    let blog = ListOfBlogData.find((blog) => blog.id === parseInt(id));
-    if (blog) {
-      setBlog(blog);
-      // console.log(blog);
-    }
-  },[id]);
+  // useEffect(() => {
+  //   let blog = ListOfBlogData.find((blog) => blog.id === parseInt(id));
+  //   if (blog) {
+  //     setBlog(blog);
+  //     // console.log(blog);
+  //   }
+  // },[id]);
+
+  useEffect(()=> {
+    const config = { params : { blogId : id }, headers: {"authorization": `Bearer ${token}`}}
+    const url = "http://localhost:8000/api/v1/blogs/singlePost"
+    axios.get(url, config).then((res)=> {
+      console.log(res.data.blogMatchById);
+      return setBlog(res.data.blogMatchById)
+    })
+    .catch((err)=> {
+      console.log(err);
+    })
+  },[id])
+
+  
 
   function scrollToUp() {
     window.scrollTo(0, 0);
 }
 scrollToUp()
+
+  const likesByBackend = (id) => {
+    const url = "http://localhost:8000/api/v1/claps/updateClap";
+    console.log(id);
+    const config = { params : { blogId : id }, headers: {"authorization": `Bearer ${token}`}}
+    console.log(config);
+    axios.post(url,{}, config).then((res)=> {
+        console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
   return (
     <>
       {blog ? (
@@ -97,7 +126,7 @@ scrollToUp()
 
             <div className="claps">
               <img onClick={updatingClap} src={Claps} alt="claps" />
-              <span>{counter}Claps</span>
+              <span onClick={likesByBackend(id)}>{counter}Claps</span>
             </div>
             <hr className="mtp mtb" />
             <div className="author-img-name-date">

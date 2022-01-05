@@ -8,6 +8,7 @@ function LogIn() {
   var [emailValue, setEmail] = useState("");
   var [passValue, setPass] = useState("");
   const navigate = useNavigate();
+  const [token,setToken] = useState(()=>localStorage.getItem("token" || ""));
 
   const clickHandler = (e) => {
     e.preventDefault();
@@ -26,8 +27,15 @@ function LogIn() {
       email, password
     }
     axios.post("http://localhost:8000/api/v1/auth/login", body)
-    .then(res=> console.log(res))
+    .then(( res ) => {
+          const token = res.data.data.token
+          setToken(token);
+          console.log(res.data.data.token)
+          localStorage.setItem("token", token)
+    })
     .catch(res=> console.log(res))
+
+    localStorage.setItem("user", "Signed")
 
     navigate("/category/Home");
     window.location.reload(false);
