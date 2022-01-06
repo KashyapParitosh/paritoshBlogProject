@@ -36,15 +36,15 @@ function SinglePost() {
   const [counter, setCounter] = useState(51);
   const token = localStorage.getItem("token");
 
-  const updatingClap = () => {
-    setOnce(!once);
-    console.log(once);
-    if (once) {
-      setCounter((prevState) => prevState + 1);
-    } else {
-      setCounter((prevState) => prevState - 1);
-    }
-  };
+  // const updatingClap = () => {
+  //   setOnce(!once);
+  //   console.log(once);
+  //   if (once) {
+  //     setCounter((prevState) => prevState + 1);
+  //   } else {
+  //     setCounter((prevState) => prevState - 1);
+  //   }
+  // };
 
   // useEffect(() => {
   //   let blog = ListOfBlogData.find((blog) => blog.id === parseInt(id));
@@ -73,13 +73,15 @@ function SinglePost() {
 }
 scrollToUp()
 
-  const likesByBackend = (id) => {
+  const likesByBackend = () => {
+    console.log("cliked likesByBackend")
     const url = "http://localhost:8000/api/v1/claps/updateClap";
     console.log(id);
     const config = { params : { blogId : id }, headers: {"authorization": `Bearer ${token}`}}
     console.log(config);
     axios.post(url,{}, config).then((res)=> {
-        console.log(res)
+        console.log(res.data.blogMatchById)
+        setBlog(res.data.blogMatchById)
     })
     .catch((err) => {
       console.log(err)
@@ -124,9 +126,9 @@ scrollToUp()
               </div>
             </div>
 
-            <div className="claps">
-              <img onClick={updatingClap} src={Claps} alt="claps" />
-              <span onClick={likesByBackend(id)}>{counter}Claps</span>
+            <div onClick={likesByBackend} className="claps">
+              <img src={Claps} alt="claps" />
+              <span >{blog.claps} claps</span>
             </div>
             <hr className="mtp mtb" />
             <div className="author-img-name-date">
