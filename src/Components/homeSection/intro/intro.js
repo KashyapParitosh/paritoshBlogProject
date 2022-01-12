@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 function createIntroImage(data) {
   return (
     <div
+      key={data.id}
       className="introImg2"
       style={{ backgroundImage: `url(${data.ImgUrl})` }}
     >

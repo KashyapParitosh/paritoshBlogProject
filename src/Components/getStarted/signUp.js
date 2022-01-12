@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux'
 
-function SignUp() {
+function SignUp(props) {
+    console.log(props)
     const [emailValue, setEmail] = useState("");
     const [passValue, setPass] = useState("");
     const [fullName, setName] = useState("");
     const navigate = useNavigate();
-    const [token,setToken] = useState(()=>localStorage.getItem("token" || ""));
+    const [,setToken] = useState(()=>localStorage.getItem("token" || ""));
 
     const [error, setError] = useState(null);
     // const [userDetails, setUserDetails] = useState({
@@ -39,7 +41,7 @@ function SignUp() {
         const body = {
           name, password, email
         }
-        axios.post( "http://localhost:8000/api/v1/auth/signup", body )
+        axios.post( "https://blog-back-end-01.herokuapp.com/api/v1/auth/signup", body )
         .then( (res) => {
           const token = res.data.data.token
           setToken(token);
@@ -49,9 +51,13 @@ function SignUp() {
         .catch( err =>console.log(err.status, err.message));
 
         localStorage.setItem("user", "Signed")
-
-        navigate("/category/Home")
-        window.location.reload(false);
+        
+        navigate("/category/Home", {replace:true})
+        props.userSignedIn();
+        // console.log(token);
+        // if( localStorage.getItem("token") === token ){
+          
+        // }
     }
 
     
@@ -104,4 +110,22 @@ function SignUp() {
     )
 }
 
-export default SignUp;
+
+const mapStateToProps = (state) =>{
+  console.log(state);
+  return {
+    state
+  }
+} 
+
+const mapDispatchToState = (dispatch)=>{
+  return{
+    userSignedIn : ()=>{
+      const authSignIn = localStorage.getItem("user");
+
+      dispatch({type:"login",data:authSignIn})
+    }
+  }
+} 
+
+export default connect(mapStateToProps,mapDispatchToState)(SignUp);

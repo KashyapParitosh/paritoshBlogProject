@@ -31,9 +31,6 @@ function SinglePost() {
 
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
-  const [once, setOnce] = useState(true);
-
-  const [counter, setCounter] = useState(51);
   const token = localStorage.getItem("token");
 
   // const updatingClap = () => {
@@ -56,7 +53,7 @@ function SinglePost() {
 
   useEffect(()=> {
     const config = { params : { blogId : id }, headers: {"authorization": `Bearer ${token}`}}
-    const url = "http://localhost:8000/api/v1/blogs/singlePost"
+    const url = "https://blog-back-end-01.herokuapp.com/api/v1/blogs/singlePost"
     axios.get(url, config).then((res)=> {
       console.log(res.data.blogMatchById);
       return setBlog(res.data.blogMatchById)
@@ -64,7 +61,7 @@ function SinglePost() {
     .catch((err)=> {
       console.log(err);
     })
-  },[id])
+  },[id,token])
 
   
 
@@ -75,7 +72,7 @@ scrollToUp()
 
   const likesByBackend = () => {
     console.log("cliked likesByBackend")
-    const url = "http://localhost:8000/api/v1/claps/updateClap";
+    const url = "https://blog-back-end-01.herokuapp.com/api/v1/claps/updateClap";
     console.log(id);
     const config = { params : { blogId : id }, headers: {"authorization": `Bearer ${token}`}}
     console.log(config);

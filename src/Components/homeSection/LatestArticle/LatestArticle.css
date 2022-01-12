@@ -88,6 +88,11 @@
     flex-direction: column;
 }
 
+.top-post-homePhoto img{
+   width: 305px;
+   height: 250px;
+}
+
 .date-on-top-post{
     text-align: left;
 }

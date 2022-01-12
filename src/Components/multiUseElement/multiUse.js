@@ -33,7 +33,7 @@ function MultiUse() {
 
   useEffect(() => {
     const config = { params : { category : category }, headers: {"authorization": `Bearer ${token}`}}
-    const url = "http://localhost:8000/api/v1/blogs/"
+    const url = "https://blog-back-end-01.herokuapp.com/api/v1/blogs/"
     axios.get(url, config).then((res)=> {
       console.log(res);
       return setBlog(res.data.filteredData)
@@ -41,7 +41,7 @@ function MultiUse() {
     .catch((err)=> {
       console.log(err);
     })
-  },[category])
+  },[category,token])
 
    useEffect(()=>{
      setpostNumber(2);

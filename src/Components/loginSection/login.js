@@ -2,13 +2,14 @@ import "./login.css";
 import { useState } from "react";
 import { Navigate, useNavigate } from 'react-router';
 import axios from 'axios';
+import { connect } from 'react-redux'
 
-function LogIn() {
-  const [isValid, setActive] = useState(false);
+function LogIn(props) {
+  const [isValid] = useState(false);
   var [emailValue, setEmail] = useState("");
   var [passValue, setPass] = useState("");
   const navigate = useNavigate();
-  const [token,setToken] = useState(()=>localStorage.getItem("token" || ""));
+  const [,setToken] = useState(()=>localStorage.getItem("token" || ""));
 
   const clickHandler = (e) => {
     e.preventDefault();
@@ -26,7 +27,7 @@ function LogIn() {
     const body = {
       email, password
     }
-    axios.post("http://localhost:8000/api/v1/auth/login", body)
+    axios.post("https://blog-back-end-01.herokuapp.com/api/v1/auth/login", body)
     .then(( res ) => {
           const token = res.data.data.token
           setToken(token);
@@ -38,7 +39,7 @@ function LogIn() {
     localStorage.setItem("user", "Signed")
 
     navigate("/category/Home");
-    window.location.reload(false);
+    props.userSignedOut();
 }
 
 //   const clickHandler = () => {
@@ -77,4 +78,22 @@ function LogIn() {
     </>
   );
 }
-export default LogIn;
+
+
+const mapStateToProps = (state) =>{
+  console.log(state);
+  return {
+    state
+  }
+} 
+
+const mapDispatchToState = (dispatch)=>{
+  return{
+    userSignedOut : ()=>{
+      const authSignOut = localStorage.getItem("token");
+      dispatch({type:"logOut",data:authSignOut})
+    }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToState)(LogIn);
