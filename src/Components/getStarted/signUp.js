@@ -4,7 +4,6 @@ import axios from 'axios';
 import { connect } from 'react-redux'
 
 function SignUp(props) {
-    console.log(props)
     const [emailValue, setEmail] = useState("");
     const [passValue, setPass] = useState("");
     const [fullName, setName] = useState("");

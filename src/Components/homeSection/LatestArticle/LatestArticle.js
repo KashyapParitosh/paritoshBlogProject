@@ -53,15 +53,16 @@ function createTopPosts(data) {
 }
 
 function LatestArticle() {
-  const token = localStorage.getItem("token");
   const [topPostsByBackEnd, setTopPostsByBackEnd] = useState([]);
   const [latestArticleData, setLatestArticleData] = useState([]);
-  useEffect(() => {
-    const url =
-      "https://blog-back-end-01.herokuapp.com/api/v1/blogs/filterByIsLiked";
+  useEffect(()=> {
+    //  window.addEventListener('storage', (e)=> console.log(e), false )
+    setTimeout(() => {
+      const token = localStorage.getItem("token");
+      console.log("inside useefect", token)
+      const url = "https://blog-back-end-01.herokuapp.com/api/v1/blogs/filterByIsLiked";
     // const url1 = "http://localhost:8000/api/v1/blogs/filterByIsLiked";
-    const url2 =
-      "https://blog-back-end-01.herokuapp.com/api/v1/blogs/filterByDate";
+    const url2 ="https://blog-back-end-01.herokuapp.com/api/v1/blogs/filterByDate";
     const config = { headers: { authorization: `Bearer ${token}` } };
     axios
       .get(url, config)
@@ -81,7 +82,9 @@ function LatestArticle() {
       .catch((err) => {
         console.log(err);
       });
-  }, [token]);
+    }, 1000);
+  },[])
+
   return (
     <div className="LatestArticles-Container">
       <div className="heading-home-latest">Latest Articles</div>
