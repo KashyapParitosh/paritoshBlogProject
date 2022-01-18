@@ -25,9 +25,28 @@ function createIntroImage(data) {
 function Intro() {
   const [ListOfBlogData, setIntroData] = useState([]);
 
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     const token = localStorage.getItem("token");
+  //     const url =
+  //       "https://blog-back-end-01.herokuapp.com/api/v1/blogs/dataForIntro";
+  //     const config = { headers: { authorization: `Bearer ${token}` } };
+  //     axios
+  //       .get(url, config)
+  //       .then((res) => {
+  //         console.log(res);
+  //         // console.log(res.data.filteredDataForIntro[0].ImgUrl)
+  //         setIntroData(res.data.filteredDataForIntro);
+          
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }, 1000);
+  // }, []);
   useEffect(() => {
-    setTimeout(() => {
       const token = localStorage.getItem("token");
+      console.log(token)
       const url =
         "https://blog-back-end-01.herokuapp.com/api/v1/blogs/dataForIntro";
       const config = { headers: { authorization: `Bearer ${token}` } };
@@ -42,7 +61,6 @@ function Intro() {
         .catch((err) => {
           console.log(err);
         });
-    }, 1000);
   }, []);
   console.log(ListOfBlogData);
   return (

@@ -8,7 +8,8 @@ function SignUp(props) {
     const [passValue, setPass] = useState("");
     const [fullName, setName] = useState("");
     const navigate = useNavigate();
-    const [,setToken] = useState(()=>localStorage.getItem("token" || ""));
+    // const [,setToken] = useState(()=>localStorage.getItem("token" || ""));
+    let token = ""; 
 
     const [error, setError] = useState(null);
     // const [userDetails, setUserDetails] = useState({
@@ -42,17 +43,31 @@ function SignUp(props) {
         }
         axios.post( "https://blog-back-end-01.herokuapp.com/api/v1/auth/signup", body )
         .then( (res) => {
-          const token = res.data.data.token
-          setToken(token);
+          token = res.data.data.token
+          // setToken(token);
           console.log(res.data.data.token)
           localStorage.setItem("token", token)
+          localStorage.setItem("user", "Signed")
+          
+          props.userSignedIn();
+          navigate("/category/Home", {replace:true})
         })
         .catch( err =>console.log(err.status, err.message));
-
-        localStorage.setItem("user", "Signed")
         
-        navigate("/category/Home", {replace:true})
-        props.userSignedIn();
+        // axios.post( "https://blog-back-end-01.herokuapp.com/api/v1/auth/signup", body )
+        // .then( (res) => {
+        //   token = res.data.data.token
+
+        //   // setToken(token);
+        //   // console.log(res.data.data.token)
+        //   console.log("inside then axios")
+        //   localStorage.setItem("token", token)
+        // })
+        // .catch( err =>console.log(err.status, err.message));
+        // console.log("outside axios")
+        // localStorage.setItem("user", "Signed")
+        // props.userSignedIn();
+        // navigate("/category/Home", {replace:true})
         // console.log(token);
         // if( localStorage.getItem("token") === token ){
           

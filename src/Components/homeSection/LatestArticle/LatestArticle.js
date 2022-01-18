@@ -57,7 +57,6 @@ function LatestArticle() {
   const [latestArticleData, setLatestArticleData] = useState([]);
   useEffect(()=> {
     //  window.addEventListener('storage', (e)=> console.log(e), false )
-    setTimeout(() => {
       const token = localStorage.getItem("token");
       console.log("inside useefect", token)
       const url = "https://blog-back-end-01.herokuapp.com/api/v1/blogs/filterByIsLiked";
@@ -82,7 +81,6 @@ function LatestArticle() {
       .catch((err) => {
         console.log(err);
       });
-    }, 1000);
   },[])
 
   return (

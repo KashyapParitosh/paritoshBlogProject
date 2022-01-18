@@ -27,7 +27,6 @@ function Latest() {
   const [dataForMost, setDataForMost] = useState([]);
 
   useEffect(()=> {
-    setTimeout(() => {
       const token = localStorage.getItem("token");
     const url = "https://blog-back-end-01.herokuapp.com/api/v1/blogs/filterByClap";
     // const url1 = "http://localhost:8000/api/v1/blogs/filterByClap";
@@ -39,7 +38,6 @@ function Latest() {
     }).catch((err)=> {
       console.log(err)
     })
-  },1000)
   },[token])
   return (
     <div className="latest-container">
