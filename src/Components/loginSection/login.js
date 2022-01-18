@@ -9,8 +9,9 @@ function LogIn(props) {
   var [emailValue, setEmail] = useState("");
   var [passValue, setPass] = useState("");
   const navigate = useNavigate();
-  const [,setToken] = useState(()=>localStorage.getItem("token" || ""));
-
+  const [error, setError] = useState(null);
+  // const [,setToken] = useState(()=>localStorage.getItem("token" || ""));
+  let token = "";
   const clickHandler = (e) => {
     e.preventDefault();
     // if (emailValue.length >= 1 && passValue.length >= 1) {
@@ -20,26 +21,29 @@ function LogIn(props) {
     // }
     const email = emailValue;
     const password = passValue;
-    if(email ===undefined || password === undefined ){
-      alert("Please enter valid Email & Password")
+    // if(email ===undefined || password === undefined ){
+    //   alert("Please enter valid Email & Password")
+    //   return;
+    // }
+    if( password.length < 6 || email.length < 6 ){
+      setError("too Short!!!");
       return;
-    }
+  }
+  setError("");
     const body = {
       email, password
     }
     axios.post("https://blog-back-end-01.herokuapp.com/api/v1/auth/login", body)
     .then(( res ) => {
-          const token = res.data.data.token
-          setToken(token);
+          token = res.data.data.token
           console.log(res.data.data.token)
           localStorage.setItem("token", token)
+          localStorage.setItem("user", "Signed")
+          navigate("/category/Home");
+          props.userSignedOut();
     })
     .catch(res=> console.log(res))
 
-    localStorage.setItem("user", "Signed")
-
-    navigate("/category/Home");
-    props.userSignedOut();
 }
 
 //   const clickHandler = () => {
@@ -61,14 +65,14 @@ function LogIn(props) {
               placeholder="Email"
               type="email"
             />
-
+            {error}
             <input
               onChange={(e) => setPass(e.target.value)}
               required
               placeholder="Password"
               type="Password"
             />
-
+            {error}
             <button type="submit" onClick={clickHandler} className="login-btn">
               Log In
             </button>

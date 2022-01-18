@@ -1,5 +1,5 @@
 import "./intro.css";
-import ListOfBlogData from "../../ListOfArrayOfObjects";
+import ListOfBlogDataFromStart from "../../ListOfArrayOfObjects";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -37,7 +37,7 @@ function Intro() {
   //         console.log(res);
   //         // console.log(res.data.filteredDataForIntro[0].ImgUrl)
   //         setIntroData(res.data.filteredDataForIntro);
-          
+
   //       })
   //       .catch((err) => {
   //         console.log(err);
@@ -45,22 +45,21 @@ function Intro() {
   //   }, 1000);
   // }, []);
   useEffect(() => {
-      const token = localStorage.getItem("token");
-      console.log(token)
-      const url =
-        "https://blog-back-end-01.herokuapp.com/api/v1/blogs/dataForIntro";
-      const config = { headers: { authorization: `Bearer ${token}` } };
-      axios
-        .get(url, config)
-        .then((res) => {
-          console.log(res);
-          // console.log(res.data.filteredDataForIntro[0].ImgUrl)
-          setIntroData(res.data.filteredDataForIntro);
-          
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    const token = localStorage.getItem("token");
+    console.log(token);
+    const url =
+      "https://blog-back-end-01.herokuapp.com/api/v1/blogs/dataForIntro";
+    const config = { headers: { authorization: `Bearer ${token}` } };
+    axios
+      .get(url, config)
+      .then((res) => {
+        console.log(res);
+        // console.log(res.data.filteredDataForIntro[0].ImgUrl)
+        setIntroData(res.data.filteredDataForIntro);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   console.log(ListOfBlogData);
   return (
@@ -100,7 +99,152 @@ function Intro() {
               aria-label="Slide 3"
             ></button>
           </div>
-          {/* {ListOfBlogData.slice(0, 1).map((item) => {
+          <div className="carousel-inner">
+            {ListOfBlogData.slice(0, 1).map((item) => {
+              return (
+                <div className="carousel-inner">
+                  <div className="carousel-item active">
+                    <img
+                      className="low-brigtness"
+                      src={item.ImgUrl}
+                      className="d-block w-100"
+                      alt="alt"
+                    />
+                    <div className="carousel-caption d-md-block">
+                      <Link to={`/${item.category}/${item.id}`}>
+                        <h5>{item.title}</h5>
+                      </Link>
+                      <p>
+                        {item.category} {item.time}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            {ListOfBlogData.slice(1, 2).map((item) => {
+              return (
+                <div className="carousel-inner">
+                  <div className="carousel-item">
+                    <img
+                      className="low-brigtness"
+                      src={item.ImgUrl}
+                      className="d-block w-100"
+                      alt="alt"
+                    />
+                    <div className="carousel-caption d-md-block">
+                      <Link to={`/${item.category}/${item.id}`}>
+                        <h5>{item.title}</h5>
+                      </Link>
+                      <p>
+                        {item.category} {item.time}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            {ListOfBlogData.slice(2, 3).map((item) => {
+              return (
+                <div className="carousel-inner">
+                  <div className="carousel-item">
+                    <img
+                      className="low-brigtness"
+                      src={item.ImgUrl}
+                      className="d-block w-100"
+                      alt="alt"
+                    />
+                    <div className="carousel-caption d-md-block">
+                      <Link to={`/${item.category}/${item.id}`}>
+                        <h5>{item.title}</h5>
+                      </Link>
+                      <p>
+                        {item.category} {item.time}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <div className="introImgFlexBox">
+          {/* <div className="introImg2">
+                    <div className="home-second-title">
+                        <div >Title of vertical gallery Title of vertical gallery </div>
+                        <div className="home-hero-title-date">  Travel / August 21 2017  </div>
+                    </div>
+                </div>
+                <div className="introImg3">
+                    <div className="home-second-title">
+                        <div>Title of vertical gallery  </div>
+                        <div className="home-hero-title-date">  Travel / August 21 2017  </div>
+                    </div>
+                </div> */}
+          {ListOfBlogData.slice(3, 5).map(createIntroImage)}
+        </div>
+      </div>
+    </div>
+  );
+}
+export default Intro;
+
+// clorosal with active
+{
+  /* <div
+          id="carouselExampleCaptions"
+          className="carousel slide introImg1"
+          data-bs-ride="carousel"
+        >
+          <div className="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="0"
+              className="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div className="carousel-inner">
+          {ListOfBlogData.slice(0, 1).map((item) => {
             return(
             <div className="carousel-inner">
               <div className="carousel-item active">
@@ -123,8 +267,112 @@ function Intro() {
               </div>
             </div>
             )
-          })} */}
-          
+          })}
+            {ListOfBlogData.slice(1,2).map((item) => {
+            return(
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img
+                  className="low-brigtness"
+                  src={item.ImgUrl}
+                  className="d-block w-100"
+                  alt="alt"
+                />
+                <div className="carousel-caption d-md-block">
+                  <Link
+                    to={`/${item.category}/${item.id}`}
+                  >
+                    <h5>{item.title}</h5>
+                  </Link>
+                  <p>
+                    {item.category} {item.time}
+                  </p>
+                </div>
+              </div>
+            </div>
+            )
+          })}
+            {ListOfBlogData.slice(2, 3).map((item) => {
+            return(
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img
+                  className="low-brigtness"
+                  src={item.ImgUrl}
+                  className="d-block w-100"
+                  alt="alt"
+                />
+                <div className="carousel-caption d-md-block">
+                  <Link
+                    to={`/${item.category}/${item.id}`}
+                  >
+                    <h5>{item.title}</h5>
+                  </Link>
+                  <p>
+                    {item.category} {item.time}
+                  </p>
+                </div>
+              </div>
+            </div>
+            )
+          })}
+          </div>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+</div> */
+}
+
+// clorosal without active
+{
+  /* <div
+          id="carouselExampleCaptions"
+          className="carousel slide introImg1"
+          data-bs-ride="carousel"
+        >
+          <div className="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="0"
+              className="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
           <div className="carousel-inner">
           {ListOfBlogData.slice(0, 1).map((item) => {
             return(
@@ -223,25 +471,126 @@ function Intro() {
             ></span>
             <span className="visually-hidden">Next</span>
           </button>
-        </div>
-
-        <div className="introImgFlexBox">
-          {/* <div className="introImg2">
-                    <div className="home-second-title">
-                        <div >Title of vertical gallery Title of vertical gallery </div>
-                        <div className="home-hero-title-date">  Travel / August 21 2017  </div>
-                    </div>
-                </div>
-                <div className="introImg3">
-                    <div className="home-second-title">
-                        <div>Title of vertical gallery  </div>
-                        <div className="home-hero-title-date">  Travel / August 21 2017  </div>
-                    </div>
-                </div> */}
-          {ListOfBlogData.slice(3, 5).map(createIntroImage)}
-        </div>
-      </div>
-    </div>
-  );
+</div> */
 }
-export default Intro;
+
+// clorosal in starting
+{
+  /* <div
+          id="carouselExampleCaptions"
+          className="carousel slide introImg1"
+          data-bs-ride="carousel"
+        >
+          <div className="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="0"
+              className="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>    
+          <div className="carousel-inner">
+          
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img
+                  className="low-brigtness"
+                  src={ListOfBlogDataFromStart[0].ImgUrl}
+                  className="d-block w-100"
+                  alt="alt"
+                />
+                <div className="carousel-caption d-md-block">
+                  <Link
+                    to={`/${ListOfBlogDataFromStart[0].category}/${ListOfBlogDataFromStart[0].id}`}
+                  >
+                    <h5>{ListOfBlogDataFromStart[0].title}</h5>
+                  </Link>
+                  <p>
+                    {ListOfBlogDataFromStart[0].category} {ListOfBlogDataFromStart[0].time}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img
+                  className="low-brigtness"
+                  src={ListOfBlogDataFromStart[1].ImgUrl}
+                  className="d-block w-100"
+                  alt="alt"
+                />
+                <div className="carousel-caption d-md-block">
+                  <Link
+                    to={`/${ListOfBlogDataFromStart[1].category}/${ListOfBlogDataFromStart[1].id}`}
+                  >
+                    <h5>{ListOfBlogDataFromStart[1].title}</h5>
+                  </Link>
+                  <p>
+                    {ListOfBlogDataFromStart[1].category} {ListOfBlogDataFromStart[1].time}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img
+                  className="low-brigtness"
+                  src={ListOfBlogDataFromStart[2].ImgUrl}
+                  className="d-block w-100"
+                  alt="alt"
+                />
+                <div className="carousel-caption d-md-block">
+                  <Link
+                    to={`/${ListOfBlogDataFromStart[2].category}/${ListOfBlogDataFromStart[2].id}`}
+                  >
+                    <h5>{ListOfBlogDataFromStart[2].title}</h5>
+                  </Link>
+                  <p>
+                    {ListOfBlogDataFromStart[2].category} {ListOfBlogDataFromStart[2].time}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+</div> */
+}
