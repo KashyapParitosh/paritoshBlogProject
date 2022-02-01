@@ -46,4 +46,7 @@
     .form input{
         font-size: 1.5rem;
     }
+    .form{
+        gap: 4rem;
+    }
 }

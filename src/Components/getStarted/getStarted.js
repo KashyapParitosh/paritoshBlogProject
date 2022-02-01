@@ -30,6 +30,8 @@ function GetStarted() {
               <>
                 { isNew ? <SignUp /> : <LogIn />}
                 <p className="optionForAccount">{isNew ? "Already have an account?" : "Don't have an account?"}
+                &nbsp;
+                &nbsp;
                 <button className="signup-text" onClick={clickHandler}> {isNew ? "LogIn" : "SignUp"}</button>
                 </p>
               </>
