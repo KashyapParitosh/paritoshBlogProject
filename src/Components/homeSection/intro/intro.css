@@ -111,6 +111,9 @@
     .introSec{
         grid-template-columns: 1fr;
     }
+    .intro-container{
+        padding: 5px;
+    }
     .introImg1{
         border: 2px solid black;
         max-width: 358px;

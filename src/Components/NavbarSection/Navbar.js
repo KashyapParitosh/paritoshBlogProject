@@ -33,14 +33,14 @@ function NavBar() {
           <ul className={menuIcon ? "show" : ""}>
             {navLinks.map((item, index) => {
               return (
-                <li key={index}>
+                <li onClick={clickHandler} key={index}>
                   <Link exact="true" to={`/category/${item.category}`}>
                     {item.name}
                   </Link>
                 </li>
               );
             })}
-            <li>
+            <li onClick={clickHandler}>
               <Link exact="true" to="/GetStarted">
                 { !(onLogOut) ? "View Profile" : "Login/Signin"}
               </Link>

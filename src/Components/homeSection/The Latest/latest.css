@@ -83,4 +83,7 @@
         width: 360px;
         font-size: 27px;
     }
+    .latest-posts img{
+        margin-left: 10px;
+    }
 }

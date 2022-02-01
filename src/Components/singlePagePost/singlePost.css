@@ -157,6 +157,7 @@
 @media screen and (max-width:400px) {
     .singlePost-cont{
         max-width: 400px;
+        padding: 5px 10px;
     }
     .single-post-title{
         font-size: 25px;
@@ -185,6 +186,11 @@
     }
     .moreFromTheSiren{
         max-width: 400px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     .moreSirens-flex{
         flex-direction: column;
@@ -194,7 +200,10 @@
         margin: 1.5rem 3px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
-    .relatedPosts img{
-        width: 345px;
+    .moreSiren-author-img-name-date{
+        margin-left: 25px;
+    }
+    #heading-moreFromTheSiren{
+        width: 205px;
     }
 }

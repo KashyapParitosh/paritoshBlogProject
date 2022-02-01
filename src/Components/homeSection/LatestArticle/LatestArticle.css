@@ -144,8 +144,9 @@
         display: none;
     }
     .ArticleImg{
-        background-position-y: -140px;
-        margin: 3px;
+        background-position-y: -19px;
+       
+        margin: 25px 6px 0 6px;
     }
     .advertisement-box{
         margin: 3px;
@@ -154,15 +155,19 @@
         width: 355px;
     }
     .top-post-homePhoto img{
-        width: 355px;
-        border: 1px solid black;
-        margin: 3px;
+        width: 348px;
+        /* border: 1px solid black; */
+       margin: 6px;
     }    
     .latest-post-title-1{
         text-align: center;
     }
     .date-on-top-post{
         text-align: center;
+    }
+
+    .top-post-home{
+        padding: 7px;
     }
     .top-post-section-side img {
         /* width: 120px; */

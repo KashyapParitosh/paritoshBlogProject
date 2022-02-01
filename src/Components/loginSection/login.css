@@ -5,6 +5,7 @@
     margin: auto;
     background-color: rgb(73, 73, 73);
     color: white;
+    padding: 15px;
 }
 .form {
     margin-top: 2rem;
@@ -35,4 +36,14 @@
     color: gold;
     background-color: rgb(73, 73, 73);
     font-size: 25px;
+}
+
+
+@media screen and (min-width:355px) and (max-width:600px) {
+    .logIn-cont{
+        padding: 15px;
+    }
+    .form input{
+        font-size: 1.5rem;
+    }
 }
