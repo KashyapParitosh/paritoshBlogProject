@@ -33,7 +33,7 @@ function NavBar() {
           <ul className={menuIcon ? "show" : ""}>
             {navLinks.map((item, index) => {
               return (
-                <li onClick={clickHandler} key={index}>
+                <li onClick={ clickHandler}  key={index}>
                   <Link exact="true" to={`/category/${item.category}`}>
                     {item.name}
                   </Link>

@@ -8,7 +8,7 @@ import LogIn from "../loginSection/login";
 import UserProfile from "./userProfile";
 
 function GetStarted() {
-    const [isNew, setIsnew] = useState(true);
+    const [isNew, setIsnew] = useState(false);
     const clickHandler = () => setIsnew((prevState) => !prevState);
     
     const user = localStorage.getItem("user");

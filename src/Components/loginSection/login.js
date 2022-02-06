@@ -33,14 +33,17 @@ function LogIn(props) {
     const body = {
       email, password
     }
-    axios.post("https://blog-back-end-01.herokuapp.com/api/v1/auth/login", body)
+    // const tempUrl = "http://localhost:8000/api/v1/auth/login"
+    const herokuUrl = "https://blog-back-end-01.herokuapp.com/api/v1/auth/login"
+    axios.post( herokuUrl, body)
     .then(( res ) => {
+          alert(res.data.message);
           token = res.data.data.token
           console.log(res.data.data.token)
           localStorage.setItem("token", token)
           localStorage.setItem("user", "Signed")
-          navigate("/category/Home");
-          props.userSignedOut();
+          props.userSignedIn();
+          navigate("/category/Home", {replace:true})
     })
     .catch(res=> console.log(res))
 
@@ -83,7 +86,6 @@ function LogIn(props) {
   );
 }
 
-
 const mapStateToProps = (state) =>{
   console.log(state);
   return {
@@ -93,11 +95,13 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToState = (dispatch)=>{
   return{
-    userSignedOut : ()=>{
-      const authSignOut = localStorage.getItem("token");
-      dispatch({type:"logOut",data:authSignOut})
+    userSignedIn : ()=>{
+      const authSignIn = localStorage.getItem("user");
+
+      dispatch({type:"login",data:authSignIn})
     }
   }
 }
+
 
 export default connect(mapStateToProps,mapDispatchToState)(LogIn);

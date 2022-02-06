@@ -12,17 +12,6 @@ function SignUp(props) {
     let token = ""; 
 
     const [error, setError] = useState(null);
-    // const [userDetails, setUserDetails] = useState({
-    //     fullName : "",
-    //     email : "",
-    //     password : "",
-    // });
-
-    // const handleData = (e) =>{
-    //     let name = e.target.name;
-    //     let value = e.target.value;
-    //     setUserDetails({...userDetails, [name] : value })
-    // }
 
     const submitData = (e) => {
         e.preventDefault();
@@ -35,16 +24,16 @@ function SignUp(props) {
             return;
         }
         setError("");
-
-        console.log("here");
         
         const body = {
           name, password, email
         }
-        axios.post( "https://blog-back-end-01.herokuapp.com/api/v1/auth/signup", body )
+        // const tempUrl = "http://localhost:8000/api/v1/auth/signup";
+        const herokuUrl = "https://blog-back-end-01.herokuapp.com/api/v1/auth/signup";
+        axios.post( herokuUrl, body )
         .then( (res) => {
+          alert(res.data.meassage);
           token = res.data.data.token
-          // setToken(token);
           console.log(res.data.data.token)
           localStorage.setItem("token", token)
           localStorage.setItem("user", "Signed")
@@ -54,31 +43,8 @@ function SignUp(props) {
         })
         .catch( err =>console.log(err.status, err.message));
         
-        // axios.post( "https://blog-back-end-01.herokuapp.com/api/v1/auth/signup", body )
-        // .then( (res) => {
-        //   token = res.data.data.token
-
-        //   // setToken(token);
-        //   // console.log(res.data.data.token)
-        //   console.log("inside then axios")
-        //   localStorage.setItem("token", token)
-        // })
-        // .catch( err =>console.log(err.status, err.message));
-        // console.log("outside axios")
-        // localStorage.setItem("user", "Signed")
-        // props.userSignedIn();
-        // navigate("/category/Home", {replace:true})
-        // console.log(token);
-        // if( localStorage.getItem("token") === token ){
-          
-        // }
+        
     }
-
-    
-      // if( localStorage.getItem("user") !== null){
-      //   window.location.reload(false);
-      //   return <Navigate replace to="/category/Home" />
-      // }
 
     return(
        <>
@@ -89,7 +55,6 @@ function SignUp(props) {
             <input
               required
               onChange={(e) => setName(e.target.value)}
-              // onChange={handleData}
               placeholder="Enter Name"
               type="text"
             />
@@ -97,21 +62,16 @@ function SignUp(props) {
             <input
               required
               onChange={(e) => setEmail(e.target.value)}
-              // onChange={handleData}
               placeholder="Email"
               type="email"
-              // name='email12'
-              // value= {userDetails.email}
             />
             {error}
 
             <input
               onChange={(e) => setPass(e.target.value)}
-              // onChange={handleData}
               required
               placeholder="Password"
-              type="password"
-              // value= {userDetails.password}
+              type="password"            
             />
             {error}
 
