@@ -32,7 +32,7 @@ function SignUp(props) {
         const herokuUrl = "https://blog-back-end-01.herokuapp.com/api/v1/auth/signup";
         axios.post( herokuUrl, body )
         .then( (res) => {
-          alert(res.data.meassage);
+          alert(res.data.message);
           token = res.data.data.token
           console.log(res.data.data.token)
           localStorage.setItem("token", token)
